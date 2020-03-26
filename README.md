@@ -1,8 +1,8 @@
 # Boiler Plate for MERN Stack Application
 
 ## How to Setup ?
-* **npm install**
-* **npm run client-install** or **cd client && npm install**
+* **`npm install`**
+* **`npm run client-install`** or **`cd client && npm install`**
 * Make a file **keys.js** in the directory **~/config/keys.js**
 ```json
 module.exports = {
@@ -10,6 +10,6 @@ module.exports = {
 }
 ```
 ## How to Run ?
-* Run in Server Mode : **npm run server**
-* Run in Client Mode : **npm run client**
-* Run in Developer Mode : **npm run dev**
+* Run in Server Mode : **`npm run server`**
+* Run in Client Mode : **`npm run client`**
+* Run in Developer Mode : **`npm run dev`**
