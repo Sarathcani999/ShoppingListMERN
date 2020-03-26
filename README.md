@@ -6,6 +6,6 @@
 * Make a file **keys.js** in the directory **~/config/keys.js**
 ```json
 module.exports = {
-    mongoURI : "<your mongoDB url>"
+    "mongoURI" : "<your mongoDB url>"
 }
 ```
