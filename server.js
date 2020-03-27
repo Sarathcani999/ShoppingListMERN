@@ -4,7 +4,9 @@ const app = express()
 const db = require('./config/keys')
 const chalk = require('chalk')
 const items = require('./routes/api/items')
+const users = require('./routes/api/users')
 const cors = require('cors')
+const routeReq = require('./routes/middleware/routeName')
 
 // For parsing body of requests
 app.use(express.json())
@@ -20,8 +22,12 @@ mongoose.connect(db.mongoURI , mongoOptions )
     .catch(err => console.error(err));
 
 
+// Applying middleware
+app.use(routeReq)
+
 // Use Routes
 app.use('/api/items' , items)
+app.use('/api/auth/' , users)
 
 app.get('/' , (req,res) => {
     console.log("IN / route")
