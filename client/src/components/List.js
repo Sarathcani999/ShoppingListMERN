@@ -42,7 +42,7 @@ function List(props) {
                     <Button onClick={() => {
                         setRefresh(!refresh)
                         return props.deleteItem(item._id)
-                        }} close />
+                        }} style={{color : "red"}} close />
                 </ListGroupItem>))}
             </ListGroup>
 
