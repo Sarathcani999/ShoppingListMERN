@@ -72,7 +72,7 @@ function Register(props) {
                 </Col>
                 </Form>
                 <Col >
-                    <p>Already a member ? <Link to='/login'>Sign In</Link></p>
+                    <p style={{marginTop : 10 }}>Already a member ? <Link to='/login'>Sign In</Link></p>
                 </Col>
                 <Col>
                     {props.errors.map(error => (

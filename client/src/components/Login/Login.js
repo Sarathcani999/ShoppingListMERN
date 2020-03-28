@@ -57,14 +57,21 @@ export const Login = (props) => {
                 </Col>
                 </Form>
                 <Col >
-                    <p>Not a member ? <Link to='/register'>Register</Link></p>
+                    <p style={{marginTop : 10 }}>Not a member ? <Link to='/register'>Register</Link></p>
+                    
                 </Col>
-                <Col>
+                <Col style={{minHeight : "100px"}}>
                     {props.errors.map(error => (
                         <Alert key={uuid()} color="info" isOpen={visible} toggle={onDismiss}>
                             {error}
                         </Alert>
                     ))}
+                </Col>
+                <Col >
+                    <hr />
+                    <p style={{textAlign : "center" , color : "grey"}}>
+                        &copy; Copyright 2020
+                    </p>
                 </Col>
             </Container>
         </div>
