@@ -7,6 +7,8 @@
 ```json
 module.exports = {
     "mongoURI" : "<your mongoDB url>"
+    "bcrypt" : "<key>" ,
+    "jwt" : "<key>"
 }
 ```
 ## How to Run ?
