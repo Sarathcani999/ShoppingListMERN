@@ -18,13 +18,14 @@ const items = require('./routes/api/items')
 const users = require('./routes/api/users')
 const cors = require('cors')
 
-const routeDetails = require('./routes/middleware/routeName')
+// const routeDetails = require('./routes/middleware/routeName')
 
 // For parsing body of requests
 app.use(express.json())
 app.use(cors())
 
-app.use(routeDetails)
+// // For Debugging Purpose
+// app.use(routeDetails)
 
 // MongoDB Connect
 const mongoOptions = {

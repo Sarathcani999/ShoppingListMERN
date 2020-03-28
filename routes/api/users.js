@@ -46,7 +46,7 @@ router.post('/Login' , (req,res) => {
 
     // Simple Validation
     let {username , password} = req.body
-    if (!username || !password) res.status(400).json({"message" : "Credentials are not present"})
+    if (!username || !password) return res.status(400).json({"message" : "Credentials are not present"})
     User.findOne({username}).then((user) => {
 
 
