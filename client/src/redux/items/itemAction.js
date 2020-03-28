@@ -39,7 +39,7 @@ export const deleteItem = (item_id) => {
 
 // Action to Create an Item 
 export const createItem = (item) => {
-    return function(dispatch) {
+    return function(dispatch,getState) {
         dispatch({
             type : ADD_ITEM_REQUEST
         })
@@ -48,7 +48,23 @@ export const createItem = (item) => {
             name : item
         }
 
-        axios.post('/api/items' , body)
+        const token = getState().auth.token
+
+        if (!token) {
+            return dispatch({
+                type : ADD_ITEM_FAILURE ,
+                payload : "Not Authenticated"
+                })
+        }
+
+        var config = {
+            headers : {
+                "Content-type" : "application/json" ,
+                "x_auth" : token
+            } 
+        }
+
+        axios.post('/api/items' , body , config)
             .then(res => {
                 dispatch({
                     type : ADD_ITEM_SUCCESS ,
@@ -62,6 +78,7 @@ export const createItem = (item) => {
                 })
             })
     }
+
 }
 
 

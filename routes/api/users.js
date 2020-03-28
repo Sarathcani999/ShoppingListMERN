@@ -12,15 +12,20 @@ In this file we define three routes
                 c. Hash the password and then add the user to the database . If successful ,
                         Create a token by using { user._id } if successful then return back { token , user : { user.id , user.name , user.username } }
     2 . Login :
-            @route GET api/users
-            @desc Get user
+            @route POST api/users
+            @desc Login user
             @access Public
             @Workflow :
                 a. Simple validation
                 b. Checks if there is a user with existing username
                 c. If present then compares the password
                 d. IF match found return back a token and user details
-    3 . Get User Details
+    3 . Get User Details :
+            @route GET api/users
+            @desc Get user
+            @access Private
+            @Workflow :
+                a. Search database and return the user back
 
 */
 const config = require('../../config/keys')
@@ -35,14 +40,22 @@ const User = require('../../models/Users')
 // @route POST api/auth/Login
 // @desc Login user
 // @access Public
-router.post('/Login' , auth , (req,res) => {
+router.post('/Login' , (req,res) => {
+    // console.log("-------------------------------------------")
+    // console.log(user)
+
     // Simple Validation
     let {username , password} = req.body
     if (!username || !password) res.status(400).json({"message" : "Credentials are not present"})
-
     User.findOne({username}).then((user) => {
 
-        if (!user) res.status(400).json({"message" : "No User Found"})
+
+        if (!user){
+            // return res.status(400).json({"message" : "No User Found"})
+            return res.status(400).json({
+                "message" : "No User Found"
+            })
+        }
 
         bcrypt.compare(password,user.password)
             .then(isMatch => {
@@ -59,7 +72,10 @@ router.post('/Login' , auth , (req,res) => {
                     })
                 })
             })
-            .catch(err => res.status(400).json({"message" : err.message, "from" : "bcrypt"}))
+            .catch(err => {
+                console.log(err)
+                res.status(400).json({"message" : err.message, "from" : "bcrypt"})
+            })
     })
     .catch(err => res.status(400).json({"message" : err.message , "from" : "findone"}))
 })

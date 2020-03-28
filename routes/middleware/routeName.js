@@ -1,3 +1,11 @@
+/*
+@docs
+
+Created for Testing / developer purpose .
+No need for the application
+
+*/
+
 const chalk = require('chalk')
 
 var routeName = function (req, res, next) {
@@ -10,6 +18,8 @@ var routeName = function (req, res, next) {
             chalk.bold.white(JSON.stringify(req.body))
         ) 
     )
+    console.log("---------------------HEADERS---------------------")
+    console.log(req.headers)
 
     next()
 }
